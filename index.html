@@ -17,6 +17,8 @@
     </script>
 <script type="module">
     import * as THREE from 'three';
+    import { OBJLoader } from '/OBJLoader.js';
+    import { MTLLoader } from '/MTLLoader.js';
     function main() {
         const canvas = document.querySelector('#c');
         const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
@@ -50,26 +52,46 @@
             map: texture
         });
         const cube = new THREE.Mesh(geometry, material);
+        cube.position.y = 1;
         scene.add(cube);
-
         // Sphere
         const radius = 0.5;
         const segments = 16;
         const geometrySphere = new THREE.SphereGeometry(radius, segments, segments);
         const materialSphere = new THREE.MeshPhongMaterial({ color: 0xaa8844 }); // brownish yellow
         const sphere = new THREE.Mesh(geometrySphere, materialSphere);
-        sphere.position.x = 1.5;
+        sphere.position.x = 1.85;
         scene.add(sphere);
 
         // Cylinder
         const cylinderHeight = 1.5;
-        const cylinderRadius = 0.35;
+        const cylinderRadius = 0.25;
         const cylinderSegments = 32;
         const geometryCylinder = new THREE.CylinderGeometry(cylinderRadius, cylinderRadius, cylinderHeight, cylinderSegments);
         const materialCylinder = new THREE.MeshPhongMaterial({ color: 0x8888aa }); // bluish grey
         const cylinder = new THREE.Mesh(geometryCylinder, materialCylinder);
-        cylinder.position.x = -1.5; // Position to the left
+        cylinder.position.x = -1.85; // Position to the left
         scene.add(cylinder);
+
+        const mtlLoader = new MTLLoader();
+        mtlLoader.load('/Car.mtl', (mtl) => {
+
+            mtl.preload();
+            const objLoader = new OBJLoader();
+            objLoader.setMaterials(mtl);
+            objLoader.load('Car.obj', (car) => {
+                 // Scale the car - replace x, y, z with your desired scale factors
+                car.scale.set(.5, .5, .5);
+
+                // Position the car - replace x, y, z with your desired coordinates
+                car.position.set(0, -0.75, 0);
+
+                // Rotate the car if needed - replace x, y, z with rotation angles in radians
+                car.rotation.y = Math.PI / 4;
+                scene.add(car);
+
+            });
+        });
 
         function render(time) {
 
