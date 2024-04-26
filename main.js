@@ -56,7 +56,7 @@ function main() {
     scene.add(cylinder);
 
     const mtlLoader = new MTLLoader();
-    mtlLoader.load('/Car.mtl', (mtl) => {
+    mtlLoader.load('Car.mtl', (mtl) => {
 
         mtl.preload();
         const objLoader = new OBJLoader();
