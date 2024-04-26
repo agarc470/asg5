@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { OBJLoader } from '/OBJLoader.js';
-import { MTLLoader } from '/MTLLoader.js';
+import { OBJLoader } from 'OBJLoader';
+import { MTLLoader } from 'MTLLoader';
 function main() {
     const canvas = document.querySelector('#c');
     const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
