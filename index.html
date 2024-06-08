@@ -1,19 +1,46 @@
 <html>
 
 <head>
-    <title>Three.js - Fundamentals</title>
-    <script type="importmap">{
+    <title>Three.js - Celestial Mechanics</title>
+    <script type="importmap">
+        {
             "imports": {
-            "three": "./three.module.js",
-            "OBJLoader": "./OBJLoader.js",
-            "MTLLoader": "./MTLLoader.js",
-            "OrbitControl": "./OrbitControl.js"
-          }
+                "three": "./three.module.js",
+                "OBJLoader": "./OBJLoader.js",
+                "MTLLoader": "./MTLLoader.js",
+                "OrbitControl": "./OrbitControl.js"
+            }
         }
     </script>
+    <style>
+        #infoBox {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 100;
+            max-width: 300px;
+        }
+    </style>
 </head>
+
 <body>
     <canvas id="c"></canvas>
+    <div id="infoBox">
+        <strong>About This Work:</strong>
+        <p>"Celestial Mechanics" is a Three.js-based digital universe that artfully combines physics with visual
+            aesthetics within a simulated space. At the center of this interactive experience is a detailed, futuristic
+            car that rotates to showcase its design. Orbiting around this central car are three geometric forms—a
+            sphere, a cube, and a cylinder—each following a path dictated by the car's gravitational influence.
+            Additionally, upon each page load, a variety of shapes are randomly positioned and colored, each rotating
+            independently to add layers of complexity and spontaneity to the scene. Dynamic lighting further enhances
+            the visual depth and texture, creating a visually engaging and rich experience.
+        </p>
+    </div>
     <script type="module" src="./main.js"></script>
 </body>
+
 </html>
