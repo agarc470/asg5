@@ -24,6 +24,18 @@
             z-index: 100;
             max-width: 300px;
         }
+        #playButton {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 150;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -31,16 +43,30 @@
     <canvas id="c"></canvas>
     <div id="infoBox">
         <strong>About This Work:</strong>
-        <p>"Celestial Mechanics" is a Three.js-based digital universe that artfully combines physics with visual
-            aesthetics within a simulated space. At the center of this interactive experience is a detailed, futuristic
-            car that rotates to showcase its design. Orbiting around this central car are three geometric forms—a
-            sphere, a cube, and a cylinder—each following a path dictated by the car's gravitational influence.
-            Additionally, upon each page load, a variety of shapes are randomly positioned and colored, each rotating
-            independently to add layers of complexity and spontaneity to the scene. Dynamic lighting further enhances
-            the visual depth and texture, creating a visually engaging and rich experience.
+        <p>"Celestial Mechanics" is a Three.js-based digital universe that artfully blends the principles of physics
+            with visual aesthetics within a simulated space environment. At the center of this interactive experience is
+            a detailed, futuristic car that rotates to showcase its sleek design. Orbiting around this central car are
+            three geometric forms—a sphere, a cube, and a cylinder—each tracing a path influenced by the car's
+            gravitational pull. Additionally, upon each page load, a variety of shapes are randomly positioned and
+            colored, each rotating independently. These shapes seem to drift effortlessly through space, adding a layer
+            of unpredictability and movement that mimics celestial bodies in orbit. Dynamic lighting further enhances
+            the visual depth and texture of the scene, creating a visually engaging and rich experience that captivates
+            and inspires. To heighten the immersion, visitors can play "Tokyo Drift," adding an exhilarating auditory
+            layer to the cosmic journey.
         </p>
     </div>
+    <button id="playButton">Play Audio</button>
+    <audio id="backgroundMusic" src="tokyoDrift.mp3" loop></audio>
     <script type="module" src="./main.js"></script>
+    <script>
+        const playButton = document.getElementById('playButton');
+        const audio = document.getElementById('backgroundMusic');
+
+        playButton.addEventListener('click', () => {
+            audio.play().catch(error => console.error('Error playing the audio:', error));
+            playButton.style.display = 'none'; // Hide the play button after audio starts
+        });
+    </script>
 </body>
 
 </html>
